@@ -1,12 +1,13 @@
 import express from "express";
 import { config } from "dotenv";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 config();
 const app = express();
 
 // middkewares
 app.use(express.json());
-
+app.use(cookieParser(process.env.COOKIE_SECRET));
 // remove on production
 app.use(morgan("dev"));
 
