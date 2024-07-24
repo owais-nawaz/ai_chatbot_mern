@@ -8,12 +8,17 @@ config();
 const app = express();
 
 // middleware
-app.use(cors({ origin: "", credentials: true }));
+app.use(
+  cors({
+    origin: "https://ai-chatbot-frontend-pearl.vercel.app",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // remove on production
 
-app.use("/api/v1", appRouter);
+app.use("", appRouter);
 
 export default app;
