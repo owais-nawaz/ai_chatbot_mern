@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import { body, ValidationChain, validationResult } from "express-validator";
 
 export const validate = (validations: ValidationChain[]) => {
@@ -21,11 +21,15 @@ export const loginValidator = [
   body("email").trim().isEmail().withMessage("Email is required"),
   body("password")
     .trim()
-    .isLength({ min: 8 })
-    .withMessage("Password should have atleast 8 characters"),
+    .isLength({ min: 6 })
+    .withMessage("Password should contain atleast 6 characters"),
 ];
 
 export const signupValidator = [
   body("name").notEmpty().withMessage("Name is required"),
   ...loginValidator,
+];
+
+export const chatCompletionValidator = [
+  body("message").notEmpty().withMessage("Message  is required"),
 ];
