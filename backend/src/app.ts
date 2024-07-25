@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // remove on production
-
-app.use("/api/v1", appRouter);
+app.use(morgan("dev"));
 
 export default app;
