@@ -7,7 +7,7 @@ import { AuthProvider } from "./context/AuthContext.tsx";
 import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from "react-hot-toast";
 import axios from 'axios';
-axios.defaults.baseURL = "http://https://ai-chatbot-mern-six.vercel.app";
+axios.defaults.baseURL = "https://ai-chatbot-mern-backend.onrender.com";
 axios.defaults.withCredentials = true;
 
 const theme = createTheme({ typography: { fontFamily: "Roboto Slab,serif", allVariants: { color: "white" }, } })
