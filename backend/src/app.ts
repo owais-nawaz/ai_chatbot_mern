@@ -1,6 +1,5 @@
 import express from "express";
 import { config } from "dotenv";
-import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import appRouter from "./routes/index.js";
 import cors from "cors";
@@ -20,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // remove on production
-app.use(morgan("dev"));
+
 app.use("", appRouter);
 
 export default app;
