@@ -12,6 +12,8 @@ app.use(
   cors({
     origin: "https://ai-chatbot-frontend-pearl.vercel.app",
     credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
   })
 );
 app.use(express.json());
@@ -19,6 +21,6 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // remove on production
 app.use(morgan("dev"));
-app.use("/api/v1", appRouter);
+app.use("", appRouter);
 
 export default app;
