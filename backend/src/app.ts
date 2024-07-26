@@ -19,6 +19,6 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // remove on production
 app.use(morgan("dev"));
-app.use("", appRouter);
+app.use("/api/v1", appRouter);
 
 export default app;
