@@ -36,9 +36,11 @@ export const userSignup = async (
     // create token and store cookie
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
+      sameSite: "none",
     });
 
     const token = createToken(User._id.toString(), User.email, "7d");
@@ -46,10 +48,12 @@ export const userSignup = async (
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
       path: "/",
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       expires,
       httpOnly: true,
       signed: true,
+      secure: true,
+      sameSite: "none",
     });
 
     return res
@@ -82,9 +86,11 @@ export const userLogin = async (
 
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
+      sameSite: "none",
     });
 
     const token = createToken(User._id.toString(), User.email, "7d");
@@ -92,10 +98,12 @@ export const userLogin = async (
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
       path: "/",
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       expires,
       httpOnly: true,
       signed: true,
+      secure: true,
+      sameSite: "none",
     });
 
     return res
@@ -147,9 +155,11 @@ export const userLogout = async (
 
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
+      sameSite: "none",
     });
 
     return res

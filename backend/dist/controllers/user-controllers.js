@@ -24,19 +24,23 @@ export const userSignup = async (req, res, next) => {
     // create token and store cookie
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
+      sameSite: "none",
     });
     const token = createToken(User._id.toString(), User.email, "7d");
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
       path: "/",
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       expires,
       httpOnly: true,
       signed: true,
+      secure: true,
+      sameSite: "none",
     });
     return res
       .status(201)
@@ -61,19 +65,23 @@ export const userLogin = async (req, res, next) => {
     // create token and store cookie
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
+      sameSite: "none",
     });
     const token = createToken(User._id.toString(), User.email, "7d");
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
       path: "/",
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       expires,
       httpOnly: true,
       signed: true,
+      secure: true,
+      sameSite: "none",
     });
     return res
       .status(200)
@@ -113,9 +121,11 @@ export const userLogout = async (req, res, next) => {
     }
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "https://ai-chatbot-frontend-pearl.vercel.app",
+      domain: "https://ai-chatbot-mern-backend.onrender.com",
       signed: true,
       path: "/",
+      secure: true,
+      sameSite: "none",
     });
     return res
       .status(200)
