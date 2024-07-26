@@ -22,8 +22,11 @@ export const signupUser = async (
   return data;
 };
 
+const token = localStorage.getItem("auth_token");
 export const checkAuthStatus = async () => {
-  const res = await axios.get("/user/auth-status");
+  const res = await axios.get("/user/auth-status", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   if (res.status !== 200) {
     throw new Error("Unable to authenticate");
   }
@@ -41,7 +44,9 @@ export const sendChatRequest = async (message: string) => {
 };
 
 export const getUserChats = async () => {
-  const res = await axios.get("/chat/all-chats");
+  const res = await axios.get("/chat/all-chats", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   if (res.status !== 200) {
     throw new Error("Unable to send chat");
   }
